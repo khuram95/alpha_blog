@@ -1,4 +1,5 @@
 class ArticalsController < ApplicationController
+    before_action :set_params, only: [:edit,:show,:update,:destroy]
     def new
         @artical=Artical.new
     end
@@ -31,12 +32,15 @@ class ArticalsController < ApplicationController
        @articals=Artical.all 
     end
     def destroy
-       @artical=Artical.find(params[:id]) 
+     
        @artical.destroy
        flash[:notice] = "article successfully deleted"
        redirect_to articals_path
     end
     private
+    def set_params
+        @artical=Artical.find(params[:id]) 
+    end
      def params_data
          params[:artical].permit(:title,:description)
      end

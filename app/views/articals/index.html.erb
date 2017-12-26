@@ -1,0 +1,18 @@
+<h1>listing of Articles</h1>
+<h4>
+    <%=link_to "create new article",new_artical_path%>
+</h4>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+    </tr>
+    <%@articals.each do |msg|%>
+        <tr>
+            <td><%=msg.title%></td>
+            <td><%=msg.description%></td>
+            <td><%=link_to "edit article",edit_artical_path(msg)%></td>
+            <td><%= link_to "show" , artical_path(msg)%></td>
+        </tr>
+     <%end%>
+</table>

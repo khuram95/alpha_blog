@@ -4,8 +4,31 @@ class ArticalsController < ApplicationController
     end
     def create
         @artical=Artical.new(params_data)
-        @artical.save
-        redirect_to articals_show(@artical);
+        if @artical.save
+            flash[:notice] = "article created successfully"
+            redirect_to artical_path(@artical);
+        else
+            render 'new'
+        end
+      #  @artical.save
+    end
+    def edit
+        @artical=Artical.find(params[:id])
+    end
+    def update
+         @artical=Artical.find(params[:id])
+        if @artical.update(params_data)
+             flash[:notice] = "article updated successfully"
+             redirect_to artical_path(@artical)
+        else  
+            render 'edit'
+        end
+    end
+    def show
+        @artical=Artical.find(params[:id])
+    end
+    def index
+       @articals=Artical.all 
     end
     private
      def params_data

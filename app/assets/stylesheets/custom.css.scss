@@ -1,2 +1,64 @@
+$navbar-default-bg:blue;
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+#logo
+{
+    color:white;
+    font-weight:bold;
+    text-transform :uppercase;
+    float:left;
+}
+.center
+{
+    text-align:center;
+}
+.jumbotron
+{
+    background-image:asset-url("ruby-on-rails-web-development.jpg");
+    background-size :cover;
+    height: 550px;
+}
+.jumbotron h1
+{
+    text-align: center;
+    font-weight: bold;
+    font-size: 5em;
+    letter-spacing: -1px;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    color:white;
+}
+.btn-xlarge
+{
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: -1px;
+    font-size: 1.5em;
+    background-color: black;
+}
+footer
+{
+   
+    margin-top: 45px;   
+    padding: 5px;   
+    border-top: 1px solid black;
+}
+footer small
+{
+    float: left;
+}
+footer a:hover
+{
+    color:green;
+}
+footer ul
+{
+    float: right;
+    list-style:none;
+}
+footer ul li
+{
+    float: left;
+    margin-left: 5px;
+}

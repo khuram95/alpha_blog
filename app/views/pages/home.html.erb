@@ -3,8 +3,9 @@
         <title>Home page</title>
     </head>
     <body>
-        <h1 style="color:red">this is home page</h1>
-       <%= link_to 'Alpa Blog',articals_path %> | <%= link_to 'about',about_path %>
-        <%= link_to image_tag('https://static.pexels.com/photos/248797/pexels-photo-248797.jpeg'), "https://www.youtube.com/" %>
+        <div class="jumbotron center">
+          <h1>Alpha Blog</h1>
+          <%= link_to "Sign up now",'#',class: "btn btn-danger btn-lg btn-xlarge"%>
+        </div>
     </body>
 </html>

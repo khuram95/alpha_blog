@@ -5,17 +5,38 @@
        <%end%>
     </ul>
 <%end%>
-<%= form_for @artical do |a|%>
-    <p>
-        <%= a.label:title%><br/>
-        <%=a.text_field:title%>
-    </p>
-    <p>
-        <%= a.label:description%><br/>
-        <%=a.text_area:description%>
-    </p>
-    <p>
-        <%=a.submit%>
-    </p>
-<%end%>
-     <button> <%=link_to "Back to listing",articals_path%></button>
+<div class="row">
+    <div class="col-xs-12">
+        <%= form_for(@artical, :html => {class: "form-horizontal", role:"form"}) do |a|%>
+            <div class="form-group">
+                <div class="control-lable col-sm-2">
+                    <%= a.label:title%>
+                </div>
+                <div class="col-sm-10">
+                     <%=a.text_field:title,class: "form-control",placeholder:"title of article", autofocus: true %>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="control-lable col-sm-2">
+                     <%= a.label:description%>
+                </div>
+                <div class="col-sm-10">
+                     <%=a.text_area:description,rows:10,class: "form-control",placeholder:"description of article", autofocus: true %>
+                </div>
+            </div>
+            
+             <div class="form-group">
+                <div class="control-lable col-sm-offset-2 col-sm-12">
+                     <%=a.submit class: "btn btn-primary btn btn-lg"%>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-lable col-sm-4 col-sm-offset-4">
+                     <%=link_to "[cancel request and Back to listing]",articals_path%>
+                </div>
+            </div>
+        <%end%>
+    </div>
+</div>
+     

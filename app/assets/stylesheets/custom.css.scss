@@ -40,11 +40,22 @@ $navbar-default-bg:blue;
 .artical-actions
 {
     border-top: 1px solid black;
-    padding-top: 5px;
+    padding-top: 15px;
 }
 .description
 {
  margin-top: 0px;   
+}
+.artical-title
+{
+    font-weight: bold;  
+    font-size: 1.5em;
+}
+.artical-body
+{
+   border-top: 1px solid grey; 
+   padding-top: 20px;    
+   padding-bottom: 20px;
 }
 footer
 {

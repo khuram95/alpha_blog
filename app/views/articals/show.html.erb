@@ -1,8 +1,14 @@
-<h1>show page</h1>
+<h1 align="center">title:<%=@artical.title%></h1>
+    <div class="well col-xs-10 col-xs-offset-2">
+        <h1 class="center description"><strong>Description</strong></h1>
+        <hr>
+        <%= simple_format(@artical.description)%>
+        <div class="artical-actions center">
+            <%=link_to "Back to listing",articals_path,class: "btn btn-success"%>
+            <%=link_to "Edit this article",edit_artical_path,class: "btn btn-primary"%>
+            <%=link_to "Create Article",new_artical_path,class: "btn btn-success"%>
+            <%=link_to "Delete this article",artical_path(@artical), method: :delete, data: {confirm:"are you sure to delete this article"}, class: "btn btn-danger"%>
+        </div>
+    </div>
 
-<p>title:<%=@artical.title%></p>
-<p>description:<%=@artical.description%></p>
-
-<%=link_to "Back to listing",articals_path%>
-<button> <%=link_to "Go to edit",edit_artical_path%></button>
-<button> <%=link_to "go to create new article",new_artical_path%></button>
+ 

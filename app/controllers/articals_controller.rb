@@ -6,7 +6,7 @@ class ArticalsController < ApplicationController
     def create
         @artical=Artical.new(params_data)
         if @artical.save
-            flash[:notice] = "article created successfully"
+            flash[:success] = "article created successfully"
             redirect_to artical_path(@artical);
         else
             render 'new'
@@ -19,7 +19,7 @@ class ArticalsController < ApplicationController
     def update
          @artical=Artical.find(params[:id])
         if @artical.update(params_data)
-             flash[:notice] = "article updated successfully"
+             flash[:success] = "article updated successfully"
              redirect_to artical_path(@artical)
         else  
             render 'edit'
@@ -34,7 +34,7 @@ class ArticalsController < ApplicationController
     def destroy
      
        @artical.destroy
-       flash[:notice] = "article successfully deleted"
+       flash[:danger] = "article successfully deleted"
        redirect_to articals_path
     end
     private

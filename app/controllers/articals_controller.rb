@@ -4,7 +4,9 @@ class ArticalsController < ApplicationController
         @artical=Artical.new
     end
     def create
+    
         @artical=Artical.new(params_data)
+        @artical.user=User.last
         if @artical.save
             flash[:success] = "article created successfully"
             redirect_to artical_path(@artical);

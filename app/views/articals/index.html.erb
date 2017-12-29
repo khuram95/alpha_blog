@@ -9,6 +9,13 @@
                     </div>
                     <div class="artical-body">
                         <%=truncate(artical.description,length: 100)%>
+                        <div class="article-meta-details">
+                            <small>
+                                created by: <%=artical.user.username if artical.user%>,
+                                <%= time_ago_in_words(artical.created_at)%> ago,
+                                <%= time_ago_in_words(artical.updated_at)%>
+                            </small>
+                        </div>
                     </div>
                      <div class="artical-actions ">
                         <%=link_to "Edit this article",edit_artical_path(artical),class: "btn btn-primary"%>

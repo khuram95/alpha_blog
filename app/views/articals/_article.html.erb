@@ -1,0 +1,28 @@
+ <%obj.each do |artical|%>
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-2">
+                <div class="well well-lg">
+                    <div class="artical-title">
+                        <%=link_to artical.title,artical_path(artical)%>
+                    </div>
+                    <div class="artical-body">
+                        <%=truncate(artical.description,length: 100)%>
+                        <div class="article-meta-details">
+                            <small>
+                                created by: <%=artical.user.username if artical.user%>,
+                               created at <%= time_ago_in_words(artical.created_at)%> ago,
+                                update at <%= time_ago_in_words(artical.updated_at)%>
+                            </small>
+                        </div>
+                    </div>
+                    <% if logged_in? && current_user==artical.user%>
+                         <div class="artical-actions ">
+                            <%=link_to "Edit this article",edit_artical_path(artical),class: "btn btn-primary"%>
+                            <%=link_to "Create Article",new_artical_path,class: "btn btn-success"%>
+                            <%=link_to "Delete this article",artical_path(artical), method: :delete, data: {confirm:"are you sure to delete this article"}, class: "btn btn-danger"%>
+                        </div>
+                    <%end%>
+                </div>
+            </div>
+        </div>
+     <%end%>

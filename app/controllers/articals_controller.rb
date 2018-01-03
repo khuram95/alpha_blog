@@ -1,5 +1,7 @@
 class ArticalsController < ApplicationController
     before_action :set_params, only: [:edit,:show,:update,:destroy]
+    before_action :require_user, except: [:show, :index] # require_user function define in application controller.rb
+    before_action :require_same_user, only: [:edit, :update, :destroy]
     def new
         @artical=Artical.new
     end
@@ -31,7 +33,7 @@ class ArticalsController < ApplicationController
         @artical=Artical.find(params[:id])
     end
     def index
-       @articals=Artical.all 
+       @articals=Artical.paginate(page: params[:page], per_page: 5)
     end
     def destroy
      
@@ -45,5 +47,11 @@ class ArticalsController < ApplicationController
     end
      def params_data
          params[:artical].permit(:title,:description)
+     end
+     def require_same_user
+        if current_user != @artical.user
+            flash[:danger]="you can't update other's articles"
+            redirect_to root_path
+        end
      end
 end

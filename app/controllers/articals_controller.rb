@@ -8,7 +8,7 @@ class ArticalsController < ApplicationController
     def create
     
         @artical=Artical.new(params_data)
-        @artical.user=User.last
+        @artical.user=current_user
         if @artical.save
             flash[:success] = "article created successfully"
             redirect_to artical_path(@artical);
@@ -49,7 +49,7 @@ class ArticalsController < ApplicationController
          params[:artical].permit(:title,:description)
      end
      def require_same_user
-        if current_user != @artical.user
+        if current_user != @artical.user and !current_user.admin
             flash[:danger]="you can't update other's articles"
             redirect_to root_path
         end

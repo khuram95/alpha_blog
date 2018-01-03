@@ -19,7 +19,7 @@
         <%= simple_format(@artical.description)%>
         <div class="artical-actions ">
             <%=link_to "Back to listing",articals_path,class: "btn btn-success"%>
-            <% if logged_in? && current_user == @artical.user %>
+            <% if logged_in? && (current_user == @artical.user || current_user.admin?) %>
                 <%=link_to "Edit this article",edit_artical_path,class: "btn btn-primary"%>
                 <%=link_to "Create Article",new_artical_path,class: "btn btn-success"%>
                 <%=link_to "Delete this article",artical_path(@artical), method: :delete, data: {confirm:"are you sure to delete this article"}, class: "btn btn-danger"%>

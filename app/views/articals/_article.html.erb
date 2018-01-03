@@ -15,7 +15,7 @@
                             </small>
                         </div>
                     </div>
-                    <% if logged_in? && current_user==artical.user%>
+                    <% if logged_in? && (current_user==artical.user ||  current_user.admin?)%>
                          <div class="artical-actions ">
                             <%=link_to "Edit this article",edit_artical_path(artical),class: "btn btn-primary"%>
                             <%=link_to "Create Article",new_artical_path,class: "btn btn-success"%>

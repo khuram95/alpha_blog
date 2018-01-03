@@ -10,8 +10,10 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if(@user.save)
-            flash[:success] = "Your account was created successfully"
-            redirect_to articals_path
+            session[:user_id] = @user.id
+            flash[:success] = "#{@user.username}'s account was created successfully"
+          
+            redirect_to user_path(@user)
         else
             render 'new'
         end
@@ -39,7 +41,7 @@ class UsersController < ApplicationController
          @user = User.find(params[:id])
     end
     def require_same_user
-        if current_user != @user
+        if current_user != @user 
             flash[:danger]="you can't update other's profile"
             redirect_to users_path
         end

@@ -46,7 +46,7 @@ class ArticalsController < ApplicationController
         @artical=Artical.find(params[:id]) 
     end
      def params_data
-         params[:artical].permit(:title,:description)
+         params[:artical].permit(:title,:description,category_ids:[])
      end
      def require_same_user
         if current_user != @artical.user and !current_user.admin

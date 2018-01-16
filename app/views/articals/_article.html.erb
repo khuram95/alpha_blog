@@ -15,6 +15,9 @@
                             </small>
                         </div>
                     </div>
+                    <% if artical.categories.any? %>
+                        <p>Categories: <%= render artical.categories %></p>
+                    <% end %>
                     <% if logged_in? && (current_user==artical.user ||  current_user.admin?)%>
                          <div class="artical-actions ">
                             <%=link_to "Edit this article",edit_artical_path(artical),class: "btn btn-primary"%>

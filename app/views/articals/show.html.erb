@@ -17,6 +17,9 @@
         <h1 class="center description"><strong>Description</strong></h1>
         <hr>
         <%= simple_format(@artical.description)%>
+        <% if @artical.categories.any? %>
+            <p>Categories: <%= render @artical.categories %></p>
+        <% end %>
         <div class="artical-actions ">
             <%=link_to "Back to listing",articals_path,class: "btn btn-success"%>
             <% if logged_in? && (current_user == @artical.user || current_user.admin?) %>
